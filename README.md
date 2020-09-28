@@ -2,4 +2,4 @@
 Second attempt at Wes Bos' JavaScript30 course
 
 ### Latest Video
-Module 8: Fun with Canvas
+(in progress) Module 9: 14 Must-Know Dev Tools Tricks
