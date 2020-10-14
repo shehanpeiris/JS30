@@ -30,9 +30,17 @@ function skip() {
 
 
 function handleRangeUpdate() {
-  console.log(this.value);
+  video[this.name] = this.value;
 }
 
+function handleProgress() {
+  const percent = (video.currentTime / video.duration) * 100;
+  progressFilled.style.flexBasis = `${percent}%`;
+};
+
+function scrubVideo(event) {
+  video.currentTime = (event.offsetX/progressBar.offsetWidth)*video.duration;
+};
 
 // Step 3: Hook up event listeners
 
@@ -40,9 +48,17 @@ function handleRangeUpdate() {
 video.addEventListener("click", togglePlay);
 video.addEventListener("play", updateButton);
 video.addEventListener("pause", updateButton);
+video.addEventListener("timeupdate", handleProgress);
 
 toggle.addEventListener("click", togglePlay);
 
 skipButtons.forEach(button => button.addEventListener("click", skip));
 
 ranges.forEach(slider => slider.addEventListener("change", handleRangeUpdate));
+ranges.forEach(slider => slider.addEventListener("mousemove", handleRangeUpdate));
+
+progressBar.addEventListener("click", scrubVideo);
+let mouseDown = false;
+progressBar.addEventListener("mousemove", (event) => mousedown && scrubVideo(event));
+progressBar.addEventListener("mousedown", () => mousedown = true);
+progressBar.addEventListener("mouseup", () => mousedown = false);
