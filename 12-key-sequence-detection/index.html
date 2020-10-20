@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+  const keysPressed = [];
+  const codeWord = "panther";
+
+  window.addEventListener("keyup", (event) => {
+    keysPressed.push(event.key);
+    keysPressed.splice(-codeWord.length-1, keysPressed.length - codeWord.length);
+    let joinedWord = keysPressed.join("");
+    if (joinedWord === codeWord) {
+      alert("You've entered my secret code!!");
+    }
+  });
+</script>
+</body>
+</html>
