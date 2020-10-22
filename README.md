@@ -2,4 +2,4 @@
 Second attempt at Wes Bos' JavaScript30 course
 
 ### Latest Video
-Module 12: Key Sequence Detection
+Module 13: Slide in on scroll
